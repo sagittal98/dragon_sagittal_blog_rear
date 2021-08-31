@@ -7,6 +7,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.annotation.Resource;
 
+/**
+ * token令牌配置类，实现web层进行拦截然后校验token
+ *
+ * @author ChunYu Sagittal
+ * @date 2021/8/31
+ */
 @Configuration
 public class TokenConfig implements WebMvcConfigurer {
 
@@ -24,19 +30,23 @@ public class TokenConfig implements WebMvcConfigurer {
                  * 路径拦截：所有的路径都将被拦截
                  */
                 .addPathPatterns(
-                        "/serviceuser/**" /* 拦截serviceuser */
+                        // 拦截 service user
+                        "/serviceuser/**"
                 )
                 /*
                  * 排除拦截的地址
                  */
                 .excludePathPatterns(
-                        /* 静态资源不拦截 */
-                        "/serviceuser/user/check/*",/* 不拦截昵称检查 */
-                        "/serviceuser/user/add",/* 账户注册不拦截 */
-                        "/serviceuser/user/login",/* 账户登录不拦截 */
-                        "/serviceuser/common/*",/* 公共接口不拦截 */
-                        "/*.html", /* 静态资源不拦截 */
-                        "/*.js", /* 静态资源不拦截 */
+                        // 不拦截昵称检查
+                        "/serviceuser/user/check/*",
+                        // 不拦截账户注册及登录
+                        "/serviceuser/user/add",
+                        "/serviceuser/user/login",
+                        // 不拦截公共接口
+                        "/serviceuser/common/*",
+                        // 不拦截静态资源
+                        "/*.html",
+                        "/*.js",
                         "/*.css");
     }
 }

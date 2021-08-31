@@ -6,7 +6,11 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
-
+/**
+ * 博文实体类
+ * @author ChunYu Sagittal
+ * @date 2021/8/31
+ */
 @Data
 public class BlogModel implements Serializable {
     @ApiModelProperty(value = "博客ID")

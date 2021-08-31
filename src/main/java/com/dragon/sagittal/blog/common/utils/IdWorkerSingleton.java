@@ -7,13 +7,17 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 /**
  * 一个分布式的id发号器，不依赖数据库
- * 根据twitter的SnowFlake改写成java版本
- * 该类为一个单例模式，实例化方法如下：
- * IdWorkerSingleton id = IdWorkerSingleton.getInstance(0L, 0L);
- * 获取一个id：
- * id.nextId();
+ * * 根据twitter的SnowFlake改写成java版本
+ * * 该类为一个单例模式，实例化方法如下：
+ * * IdWorkerSingleton id = IdWorkerSingleton.getInstance(0L, 0L);
+ * * 获取一个id：
+ * * id.nextId();
+ *
+ * @author ChunYu Sagittal
+ * @date 2021/8/31
  */
 public class IdWorkerSingleton {
     private static volatile IdWorkerSingleton instance;
@@ -61,11 +65,11 @@ public class IdWorkerSingleton {
     /**
      * 数据中心
      */
-    private  long dataCenterId;
+    private long dataCenterId;
     /**
      * 机器标识
      */
-    private  long machineId;
+    private long machineId;
     /**
      * 序列号
      */
@@ -77,8 +81,9 @@ public class IdWorkerSingleton {
 
     /**
      * 构造单例模式
-     * @param dataCenterId  数据中心ID
-     * @param machineId  机器标识ID
+     *
+     * @param dataCenterId 数据中心ID
+     * @param machineId    机器标识ID
      */
     public static IdWorkerSingleton getInstance(Long dataCenterId, long machineId) {
         if (null == instance) {
@@ -95,7 +100,7 @@ public class IdWorkerSingleton {
      * 获取IdWorkSingleton实例
      */
     public static IdWorkerSingleton getInstance() {
-        return getInstance(0L,1);
+        return getInstance(0L, 1);
     }
 
     /**

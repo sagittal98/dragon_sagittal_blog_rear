@@ -36,13 +36,13 @@ public class DsCategory implements Serializable {
      */
     private String category;
 
-    /* 校验数据 */
+
     public boolean checkData() {
         return null != category;
     }
 
-    /* 校验数据2 */
-    public boolean checkDataALL() {
+
+    public boolean checkDataAll() {
         return null != category || null != categoryId;
     }
 }

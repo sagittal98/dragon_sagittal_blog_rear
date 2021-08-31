@@ -1,9 +1,8 @@
 package com.dragon.sagittal.blog.common.config;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
-import com.dragon.sagittal.blog.common.exceptionHandler.GuliException;
+import com.dragon.sagittal.blog.common.exceptionhandler.GuliException;
 import com.dragon.sagittal.blog.common.httpstatus.MyHttpStatus;
 import com.dragon.sagittal.blog.common.model.LoginUserModel;
 import io.jsonwebtoken.*;
@@ -14,19 +13,26 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
-@Configuration  /* jwt配置类 */
+/**
+ * JWT配置类
+ *
+ * @author ChunYu Sagittal
+ * @date 2021/8/31
+ */
+@Configuration
 @Data
-@Component  /* 配置自动被装在 */
+@Component
 public class JwtConfig {
 
     @Value("${user.jwt.SECRET}")
-    private String SECRET;
+    private String secret;
 
     @Value("${user.jwt.EXPIRES}")
-    private Long EXPIRES;
+    private Long expires;
 
     @Value("${user.jwt.ISSUER}")
-    private String ISSUER;
+    private String issuer;
+
 
     /**
      * 创建token
@@ -39,11 +45,15 @@ public class JwtConfig {
         JwtBuilder jwtBuilder = Jwts.builder()
                 .setHeaderParam("type", "JWT")
                 .setHeaderParam("alg", "HS256")
-                .setIssuedAt(new Date(System.currentTimeMillis()))  /* 签发日期 */
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRES)) /* 有效期 */
-                .claim("data", claim)  /* 键值对 */
-                .setIssuer(ISSUER)   /* 签发人 */
-                .signWith(signatureAlgorithm, SECRET);
+                // 签发日期
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                // 有效期时长
+                .setExpiration(new Date(System.currentTimeMillis() + expires))
+                // 加密信息
+                .claim("data", claim)
+                // 签发人
+                .setIssuer(issuer)
+                .signWith(signatureAlgorithm, secret);
         return jwtBuilder.compact();
     }
 
@@ -67,9 +77,10 @@ public class JwtConfig {
     }
 
     /**
-     * 获取用户ID
+     * 通过解密token令牌获取加密信息中的用户ID
      *
-     * @param token token
+     * @param token token令牌
+     * @return 返回加密信息里的用户ID【Long】
      */
     public Long getUserId(String token) {
         String claim = claim(token);
@@ -82,10 +93,11 @@ public class JwtConfig {
         }
     }
 
-    /*
-     * 从token中获取登录信息
+    /**
+     * 从token令牌中获取加密的用户信息
      *
-     * @param token token
+     * @param token token令牌
+     * @return 返回登录模型
      */
     public LoginUserModel getUserModel(String token) {
         String claim = claim(token);
@@ -99,20 +111,21 @@ public class JwtConfig {
 
 
     /**
-     * 解析token
+     * 解密token，获取加密信息字符串
      *
-     * @param token token
+     * @param token token令牌
+     * @return 返回加密信息【String】
      */
     private String claim(String token) {
         try {
             Claims body = Jwts.parser()
-                    .setSigningKey(SECRET)
+                    .setSigningKey(secret)
                     .parseClaimsJws(token)
                     .getBody();
             Object data = body.get("data");
             return data.toString();
         } catch (ExpiredJwtException e) {
-            throw new GuliException(MyHttpStatus.TOKEN_EXPIRE.getCODE(), MyHttpStatus.TOKEN_EXPIRE.getDESCRIPTION());
+            throw new GuliException(MyHttpStatus.TOKEN_EXPIRE.getCode(), MyHttpStatus.TOKEN_EXPIRE.getDescription());
         }
     }
 }

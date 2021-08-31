@@ -1,4 +1,4 @@
-package com.dragon.sagittal.blog.common.exceptionHandler;
+package com.dragon.sagittal.blog.common.exceptionhandler;
 
 import com.dragon.sagittal.blog.common.R;
 import lombok.extern.slf4j.Slf4j;
@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * 统一异常处理类
+ * 自定义异常统一处理
+ * @author ChunYu Sagittal
+ * @date 2021/8/31
  */
 @ControllerAdvice
-@Slf4j  // 可以将异常输出到文件中去
+@Slf4j
 public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseBody

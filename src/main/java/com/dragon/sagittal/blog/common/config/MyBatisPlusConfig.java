@@ -12,22 +12,23 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
- * Spring boot 配置包
+ * Mybatis Plus 配置类，用于扫描mapper包并实现各类插件操作
+ *
+ * @author ChunYu Sagittal
+ * @date 2021/8/31
  */
 @Configuration
 @EnableTransactionManagement
 @MapperScan("com.dragon.sagittal.blog.mapper")
 @Component
 public class MyBatisPlusConfig {
-    /**
-     * SQL 执行性能分析插件
-     * 开发环境使用，线上不推荐。 maxTime 指的是 sql 最大执行时长
-     */
+
     @Bean
-    @Profile({"dev","test"})// 设置 dev test 环境开启
+    @Profile({"dev", "test"})
     public PerformanceInterceptor performanceInterceptor() {
         PerformanceInterceptor performanceInterceptor = new PerformanceInterceptor();
-        performanceInterceptor.setMaxTime(1000);//ms，超过此处设置的ms则sql不执行
+        //ms，超过此处设置的ms则sql不执行
+        performanceInterceptor.setMaxTime(1000);
         performanceInterceptor.setFormat(true);
         return performanceInterceptor;
     }
@@ -37,7 +38,7 @@ public class MyBatisPlusConfig {
      * 逻辑删除插件
      */
     @Bean
-    public ISqlInjector sqlInjector(){
+    public ISqlInjector sqlInjector() {
         return new LogicSqlInjector();
     }
 

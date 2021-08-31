@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/serviceuser/ds-user-friends")
-@CrossOrigin // 跨域配置
+@CrossOrigin
 public class DsUserFriendsController {
 
 }

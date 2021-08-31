@@ -7,7 +7,11 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * API返回参数类
+ * @author ChunYu Sagittal
+ * @date 2021/8/31
+ */
 @Data
 public class R implements Serializable {
 
@@ -28,16 +32,16 @@ public class R implements Serializable {
 
     public static R ok() {
         return new R()
-                .message(MyHttpStatus.SUCCESS.getDESCRIPTION())
+                .message(MyHttpStatus.SUCCESS.getDescription())
                 .success(true)
-                .code(MyHttpStatus.SUCCESS.getCODE());
+                .code(MyHttpStatus.SUCCESS.getCode());
     }
 
     public static R error() {
         return new R()
-                .message(MyHttpStatus.FAIL.getDESCRIPTION())
+                .message(MyHttpStatus.FAIL.getDescription())
                 .success(false)
-                .code(MyHttpStatus.FAIL.getCODE());
+                .code(MyHttpStatus.FAIL.getCode());
     }
 
     public R success(Boolean success) {

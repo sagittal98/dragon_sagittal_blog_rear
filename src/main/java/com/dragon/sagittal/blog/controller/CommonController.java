@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 公共接口类
+ * 公共Controller类，实现游客能浏览的数据
+ * @author ChunYu Sagittal
+ * @date 2021/8/31
  */
 @RestController
 @RequestMapping("/serviceuser/common")

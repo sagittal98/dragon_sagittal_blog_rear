@@ -13,7 +13,7 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("/serviceuser/blog/category")
-@CrossOrigin // 跨域配置
+@CrossOrigin
 @Api(tags = "blog category API接口")
 public class DsBlogCategoryController {
 

@@ -2,7 +2,7 @@ package com.dragon.sagittal.blog.controller;
 
 
 import com.dragon.sagittal.blog.common.R;
-import com.dragon.sagittal.blog.common.exceptionHandler.GuliException;
+import com.dragon.sagittal.blog.common.exceptionhandler.GuliException;
 import com.dragon.sagittal.blog.common.httpstatus.MyHttpStatus;
 import com.dragon.sagittal.blog.entity.DsRole;
 import com.dragon.sagittal.blog.service.DsRoleService;
@@ -22,7 +22,7 @@ import java.util.List;
 @Api(tags = "Role API 接口")
 @RestController
 @RequestMapping("/serviceuser/role")
-@CrossOrigin // 跨域配置
+@CrossOrigin
 public class DsRoleController {
 
     @Resource

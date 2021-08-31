@@ -5,20 +5,25 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+/**
+ * ID生成器配置文件
+ *
+ * @author ChunYu Sagittal
+ * @date 2021/8/31
+ */
 @Component
 @Data
-@Scope
 public class YmlConfig {
 
     /**
      * 数据中心
      */
     @Value("${yml.dataCenterId}")
-    private  long dataCenterId;
+    private long dataCenterId;
     /**
      * 机器码
      */
     @Value("${yml.machineId}")
-    private  long machineId;
+    private long machineId;
 
 }

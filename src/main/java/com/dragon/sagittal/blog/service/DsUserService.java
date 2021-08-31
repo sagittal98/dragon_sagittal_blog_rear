@@ -6,7 +6,7 @@ import com.dragon.sagittal.blog.entity.DsUser;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author ChunYu Sagittal
@@ -15,14 +15,18 @@ import com.dragon.sagittal.blog.entity.DsUser;
 public interface DsUserService extends IService<DsUser> {
 
     /**
-     * 登录接口
-     * @param dsUser 登录数据
+     * 用户登录接口
+     *
+     * @param dsUser 用户登录参数
+     * @return 返回参数
      */
     R login(DsUser dsUser);
 
     /**
-     * 检查昵称接口
-     * @param userName  待检查数据
+     * 待注册用户检查用户名是否存在数据库，如果存在则不能进行注册，反之可以注册
+     *
+     * @param userName 用户昵称
+     * @return 返回参数
      */
     R checkUserName(String userName);
 }

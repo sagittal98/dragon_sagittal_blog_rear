@@ -65,13 +65,11 @@ public class DsUser extends LoginUserModel implements Serializable{
     /**
      * 用户创建时间
      */
-    // 自动填充创建时间
     @TableField(fill = FieldFill.INSERT)
     private Date userCreateTime;
     /**
      * 用户更新时间
      */
-    // 更新时间
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date userUpdateTime;
 

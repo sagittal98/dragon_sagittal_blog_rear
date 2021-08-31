@@ -16,7 +16,10 @@ import java.io.PrintWriter;
 
 
 /**
- * 自定义Token拦截器
+ * 自定义token拦截器，进行token校验
+ *
+ * @author ChunYu Sagittal
+ * @date 2021/8/31
  */
 @Component
 public class TokenInterceptor implements HandlerInterceptor {
@@ -36,8 +39,8 @@ public class TokenInterceptor implements HandlerInterceptor {
             PrintWriter out;
             try {
                 JSONObject res = new JSONObject();
-                res.put("code", MyHttpStatus.TOKEN_IS_NULL.getCODE());
-                res.put("msg", MyHttpStatus.TOKEN_IS_NULL.getDESCRIPTION());
+                res.put("code", MyHttpStatus.TOKEN_IS_NULL.getCode());
+                res.put("msg", MyHttpStatus.TOKEN_IS_NULL.getDescription());
                 res.put("data", null);
                 res.put("success", false);
                 out = response.getWriter();
@@ -62,8 +65,8 @@ public class TokenInterceptor implements HandlerInterceptor {
             PrintWriter out;
             try {
                 JSONObject res = new JSONObject();
-                res.put("code", MyHttpStatus.TOKEN_CHECK_FAIL.getCODE());
-                res.put("msg", MyHttpStatus.TOKEN_CHECK_FAIL.getDESCRIPTION());
+                res.put("code", MyHttpStatus.TOKEN_CHECK_FAIL.getCode());
+                res.put("msg", MyHttpStatus.TOKEN_CHECK_FAIL.getDescription());
                 res.put("data", null);
                 res.put("success", false);
                 out = response.getWriter();

@@ -35,13 +35,13 @@ public class DsLabel implements Serializable {
      */
     private String label;
 
-    /* 校验数据 */
+
     public boolean checkData() {
         return null != label;
     }
 
-    /* 校验数据2 */
-    public boolean checkDataALL() {
+
+    public boolean checkDataAll() {
         return null != label || null != labelId;
     }
 }

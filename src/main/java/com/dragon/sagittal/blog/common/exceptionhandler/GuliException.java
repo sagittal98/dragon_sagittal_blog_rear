@@ -1,4 +1,4 @@
-package com.dragon.sagittal.blog.common.exceptionHandler;
+package com.dragon.sagittal.blog.common.exceptionhandler;
 
 
 import com.dragon.sagittal.blog.common.httpstatus.MyHttpStatus;
@@ -7,9 +7,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 /**
- * 自定义异常
+ * 自定义异常类
+ * @author ChunYu Sagittal
+ * @date 2021/8/31
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -22,8 +23,8 @@ public class GuliException extends RuntimeException{
 
 
     public GuliException(MyHttpStatus myHttpStatus){
-        this.msg = myHttpStatus.getDESCRIPTION();
-        this.code = myHttpStatus.getCODE();
+        this.msg = myHttpStatus.getDescription();
+        this.code = myHttpStatus.getCode();
     }
 
 }

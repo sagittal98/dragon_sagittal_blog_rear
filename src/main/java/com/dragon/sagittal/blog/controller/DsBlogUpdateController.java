@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/serviceuser/ds-blog-update")
-@CrossOrigin // 跨域配置
+@CrossOrigin
 public class DsBlogUpdateController {
 
 }

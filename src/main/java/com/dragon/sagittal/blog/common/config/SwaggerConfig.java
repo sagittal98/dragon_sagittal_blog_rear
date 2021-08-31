@@ -11,8 +11,14 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@Configuration  // 配置类
-@EnableSwagger2   // swagger  整合
+/**
+ * swagger API 配置类，实现API自动生成页面并能通过swagger进行实时测试
+ *
+ * @author ChunYu Sagittal
+ * @date 2021/8/31
+ */
+@Configuration
+@EnableSwagger2
 public class SwaggerConfig {
     @Bean
     public Docket webApiConfig() {

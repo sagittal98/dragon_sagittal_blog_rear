@@ -2,7 +2,7 @@ package com.dragon.sagittal.blog.controller;
 
 
 import com.dragon.sagittal.blog.common.R;
-import com.dragon.sagittal.blog.common.exceptionHandler.GuliException;
+import com.dragon.sagittal.blog.common.exceptionhandler.GuliException;
 import com.dragon.sagittal.blog.common.httpstatus.MyHttpStatus;
 import com.dragon.sagittal.blog.entity.DsLabel;
 import com.dragon.sagittal.blog.service.DsLabelService;
@@ -25,7 +25,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/serviceuser/ds-label")
-@CrossOrigin // 跨域配置
+@CrossOrigin
 @Api(tags = "Label API接口")
 public class DsLabelController {
 
@@ -62,7 +62,7 @@ public class DsLabelController {
     @ApiOperation(value = "根据ID修改标签")
     @PutMapping("/update/lable")
     public R updateLabe(@Valid @RequestBody DsLabel dsLabel) {
-        boolean b = dsLabel.checkDataALL();
+        boolean b = dsLabel.checkDataAll();
         if (!b) {
             throw new GuliException(MyHttpStatus.LABEL_DATA_IS_NOT_COMPLETE);
         }

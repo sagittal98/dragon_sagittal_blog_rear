@@ -3,7 +3,7 @@ package com.dragon.sagittal.blog.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.dragon.sagittal.blog.common.R;
-import com.dragon.sagittal.blog.common.exceptionHandler.GuliException;
+import com.dragon.sagittal.blog.common.exceptionhandler.GuliException;
 import com.dragon.sagittal.blog.common.httpstatus.MyHttpStatus;
 import com.dragon.sagittal.blog.entity.DsUser;
 import com.dragon.sagittal.blog.mapper.DsUserMapper;

@@ -3,7 +3,7 @@ package com.dragon.sagittal.blog.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.dragon.sagittal.blog.common.R;
-import com.dragon.sagittal.blog.common.exceptionHandler.GuliException;
+import com.dragon.sagittal.blog.common.exceptionhandler.GuliException;
 import com.dragon.sagittal.blog.common.httpstatus.MyHttpStatus;
 import com.dragon.sagittal.blog.entity.DsCategory;
 import com.dragon.sagittal.blog.service.DsCategoryService;
@@ -18,7 +18,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author ChunYu Sagittal
@@ -26,7 +26,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/serviceuser/category")
-@CrossOrigin // 跨域配置
+@CrossOrigin
 @Api(tags = "Category API接口")
 public class DsCategoryController {
 
@@ -38,19 +38,19 @@ public class DsCategoryController {
     public R addBlogCategory(@Valid @RequestBody DsCategory dsCategory) {
         /* 校验数据 */
         boolean b = dsCategory.checkData();
-        if (!b){
+        if (!b) {
             throw new GuliException(MyHttpStatus.CATEGORY_DATA_IS_NOT_EXIST);
         }
         /* 查询数据库是否存在 */
         QueryWrapper<DsCategory> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("category",dsCategory.getCategory());
+        queryWrapper.eq("category", dsCategory.getCategory());
         DsCategory one = dsCategoryService.getOne(queryWrapper);
-        if (null == one){
+        if (null == one) {
             throw new GuliException(MyHttpStatus.CATEGORY_DATA_IS_EXIST);
         }
         /* 写入数据库 */
         boolean save = dsCategoryService.save(dsCategory);
-        if (save){
+        if (save) {
             return R.ok();
         }
         throw new GuliException(MyHttpStatus.ADD_CATEGORY_FAIL);
@@ -59,11 +59,11 @@ public class DsCategoryController {
     @ApiOperation(value = "根据ID删除博文分类")
     @DeleteMapping(path = "/delete/{categoryId}")
     public R deleteBlogCategory(
-            @ApiParam(name = "categoryId",value = "分类ID",required = true)
+            @ApiParam(name = "categoryId", value = "分类ID", required = true)
             @PathVariable Long categoryId
     ) {
         boolean b = dsCategoryService.removeById(categoryId);
-        if (b){
+        if (b) {
             return R.ok();
         }
         throw new GuliException(MyHttpStatus.DELETE_CATEGORY_FAIL);
@@ -73,13 +73,13 @@ public class DsCategoryController {
     @PutMapping(path = "/update/category")
     public R updateBlogCategory(@Valid @RequestBody DsCategory dsCategory) {
         /* 校验数据 */
-        boolean b = dsCategory.checkDataALL();
-        if (!b){
+        boolean b = dsCategory.checkDataAll();
+        if (!b) {
             throw new GuliException(MyHttpStatus.CATEGORY_DATA_IS_NOT_EXIST);
         }
         /* 修改数据 */
         b = dsCategoryService.updateById(dsCategory);
-        if (b){
+        if (b) {
             return R.ok();
         }
         throw new GuliException(MyHttpStatus.UPDATE_CATEGORY_FAIL);

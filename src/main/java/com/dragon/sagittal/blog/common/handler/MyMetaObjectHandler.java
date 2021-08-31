@@ -9,7 +9,11 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 
-//实现元对象处理器接口
+/**
+ * 元数据实现自动注入数据类
+ * @author ChunYu Sagittal
+ * @date 2021/8/31
+ */
 @Component
 public class MyMetaObjectHandler implements MetaObjectHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger(MyMetaObjectHandler.class);
@@ -60,9 +64,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
         this.setFieldValByName("blogCreateTime", new Date(System.currentTimeMillis()), metaObject);
         /*
          * 博客发布时间
-         */
-        // this.setFieldValByName("blogReleaseTime", new Date(System.currentTimeMillis()), metaObject);
-        /*
+         *
          * 博客点赞次数、收藏次数、阅读次数
          */
         this.setFieldValByName("blogPraiseTimes", 0, metaObject);

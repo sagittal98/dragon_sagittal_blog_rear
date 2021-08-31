@@ -8,6 +8,12 @@ import lombok.SneakyThrows;
 
 import java.io.Serializable;
 
+/**
+ * 用户登录模板，用于登录、注册等操作
+ *
+ * @author ChunYu Sagittal
+ * @date 2021/8/31
+ */
 @Data
 public class LoginUserModel implements Serializable {
 
@@ -34,12 +40,11 @@ public class LoginUserModel implements Serializable {
      */
     private String userPassword;
 
-    /* 数据检查 */
+
     public boolean checkDsUser() {
         return null != this.userPassword || null != this.roleId || null != this.userName;
     }
 
-    /* 登录检查 */
     public boolean checkLogin() {
         return null != this.userName || null != this.userPassword;
     }

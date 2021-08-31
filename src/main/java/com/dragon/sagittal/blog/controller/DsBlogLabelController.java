@@ -3,7 +3,7 @@ package com.dragon.sagittal.blog.controller;
 
 import com.dragon.sagittal.blog.common.R;
 import com.dragon.sagittal.blog.common.config.JwtConfig;
-import com.dragon.sagittal.blog.common.exceptionHandler.GuliException;
+import com.dragon.sagittal.blog.common.exceptionhandler.GuliException;
 import com.dragon.sagittal.blog.common.httpstatus.MyHttpStatus;
 import com.dragon.sagittal.blog.entity.DsBlog;
 import com.dragon.sagittal.blog.entity.DsBlogLabel;
@@ -25,7 +25,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/serviceuser/ds-blog-label")
-@CrossOrigin // 跨域配置
+@CrossOrigin
 @Api(tags = "Blog Label API接口")
 public class DsBlogLabelController {
 

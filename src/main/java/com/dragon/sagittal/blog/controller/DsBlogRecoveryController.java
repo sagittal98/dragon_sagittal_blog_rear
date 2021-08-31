@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/serviceuser/ds-blog-recovery")
-@CrossOrigin // 跨域配置
+@CrossOrigin
 public class DsBlogRecoveryController {
 
 }

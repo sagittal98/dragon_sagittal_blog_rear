@@ -3,7 +3,7 @@ package com.dragon.sagittal.blog.controller;
 
 import com.dragon.sagittal.blog.common.R;
 import com.dragon.sagittal.blog.common.config.JwtConfig;
-import com.dragon.sagittal.blog.common.exceptionHandler.GuliException;
+import com.dragon.sagittal.blog.common.exceptionhandler.GuliException;
 import com.dragon.sagittal.blog.common.httpstatus.MyHttpStatus;
 import com.dragon.sagittal.blog.common.model.LoginUserModel;
 import com.dragon.sagittal.blog.entity.DsUser;
@@ -25,7 +25,7 @@ import javax.validation.Valid;
 @Api(tags = "User API接口")
 @RestController
 @RequestMapping("/serviceuser/user")
-@CrossOrigin // 跨域配置
+@CrossOrigin
 public class DsUserController {
     @Resource
     private DsUserService dsUserService;

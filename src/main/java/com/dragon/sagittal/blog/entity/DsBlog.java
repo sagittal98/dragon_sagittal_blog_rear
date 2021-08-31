@@ -23,7 +23,7 @@ public class DsBlog extends BlogModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "博客创建时间")
-    @TableField(fill = FieldFill.INSERT)  // 自动填充
+    @TableField(fill = FieldFill.INSERT)
     private Date blogCreateTime;
 
     @ApiModelProperty(value = "博客点赞次数")
@@ -39,22 +39,20 @@ public class DsBlog extends BlogModel implements Serializable {
     private Integer blogReadTimes;
 
     @ApiModelProperty(value = "博客发布时间")
-   // @TableField(fill = FieldFill.INSERT)
     private Date blogReleaseTime;
 
     @ApiModelProperty(value = "回收状态")
     @TableField(fill = FieldFill.INSERT)
     private Boolean recoveryState;
 
-    // 逻辑删除
+
     @ApiModelProperty(value = "逻辑删除")
     @TableLogic
     @TableField(fill = FieldFill.INSERT)
     private Boolean isDeleted;
 
 
-
-    public DsBlog(BlogModel blogModel){
+    public DsBlog(BlogModel blogModel) {
         this.setBlogId(blogModel.getBlogId());
         this.setBlogContent(blogModel.getBlogContent());
         this.setBlogTitle(blogModel.getBlogTitle());

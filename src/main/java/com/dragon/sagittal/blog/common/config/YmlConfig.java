@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-@Scope
 public class YmlConfig {
 
     /**
